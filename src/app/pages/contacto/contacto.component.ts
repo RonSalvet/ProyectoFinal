@@ -24,19 +24,31 @@ export class ContactoComponent {
   }
 
   onSubmit(): void {
-    this.submitted = true
+    this.submitted = true;
 
     if (this.contactForm.valid) {
-      // Aquí iría la lógica para enviar el formulario
-      console.log("Formulario enviado:", this.contactForm.value)
-      this.messageSent = true
-      this.contactForm.reset()
-      this.submitted = false
+      const formData = this.contactForm.value;
 
-      // Ocultar el mensaje después de 5 segundos
+      // Construir mensaje para WhatsApp
+      const phoneNumber = '+59177045885'; // Reemplaza con tu número de teléfono (incluir código de país)
+      const message = `*Nuevo mensaje de contacto*
+        *Nombre:* ${formData.nombre}
+        *Email:* ${formData.email}
+        *Asunto:* ${formData.asunto}
+        *Mensaje:* ${formData.mensaje}`;
+
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+      // Abrir WhatsApp
+      window.open(whatsappUrl, '_blank');
+
+      this.messageSent = true;
+      this.contactForm.reset();
+      this.submitted = false;
+
       setTimeout(() => {
-        this.messageSent = false
-      }, 5000)
+        this.messageSent = false;
+      }, 5000);
     }
   }
 }
