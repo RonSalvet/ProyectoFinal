@@ -1,6 +1,7 @@
 import { Component } from "@angular/core"
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms"
 import { CommonModule } from "@angular/common"
+import { ActivatedRoute } from "@angular/router"
 
 @Component({
   selector: 'app-contacto',
@@ -14,13 +15,19 @@ export class ContactoComponent {
   submitted = false
   messageSent = false
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private route: ActivatedRoute) {
     this.contactForm = this.fb.group({
       nombre: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       asunto: ["", Validators.required],
       mensaje: ["", Validators.required],
     })
+    this.route.queryParams.subscribe(params => {
+      const asunto = params['asunto'];
+      if (asunto) {
+        this.contactForm.patchValue({ asunto });
+      }
+    });
   }
 
   onSubmit(): void {

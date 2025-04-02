@@ -16,7 +16,7 @@ export class ServiciosDetallesComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private tramitesService: TramitesService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -29,5 +29,12 @@ export class ServiciosDetallesComponent implements OnInit {
 
   volver(): void {
     this.router.navigate(["/servicios"])
+  }
+  solicitarCita(): void {
+    if (this.tramite) {
+      this.router.navigate(['/contacto'], {
+        queryParams: { asunto: `Cita para: ${this.tramite.titulo}` }
+      });
+    }
   }
 }
