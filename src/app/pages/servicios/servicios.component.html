@@ -1,1 +1,27 @@
-<p>servicios works!</p>
+<section class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold mb-3 text-danger">Trámites Consulares</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 800px;">
+            Seleccione uno de los siguientes trámites para obtener información detallada sobre requisitos,
+            documentación necesaria y proceso de solicitud.
+        </p>
+    </div>
+
+    <div class="row g-4">
+        <div *ngFor="let tramite of tramites" class="col-12 col-md-6">
+            <div class="card h-100 shadow-sm border-2 hover-scale ">
+                <div class="card-body p-4">
+                    <h2 class="h4 fw-bold mb-3 text-danger">{{ tramite.titulo }}</h2>
+                    <div class="ratio ratio-16x9 mb-3 overflow-hidden rounded-3">
+                        <img [src]="tramite.imagen" [alt]="tramite.titulo" class="img-fluid rounded-3">
+                    </div>
+                    <p class="text-secondary mb-3">{{ tramite.descripcionCorta }}</p>
+                    <a [routerLink]="['/tramites', tramite.id]" class="btn btn-danger d-inline-flex align-items-center">
+                        Ver detalles
+                        <i class="bi bi-chevron-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

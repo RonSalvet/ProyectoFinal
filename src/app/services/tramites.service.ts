@@ -34,7 +34,7 @@ export class TramitesService {
         "Certificado de nacimiento del abuelo/a español/a",
         "Documentación que acredite el exilio",
       ],
-      imagen: "/placeholder.svg?height=300&width=400",
+      imagen: "/memoria_democratica.jpg",
     },
     {
       id: "residencia-no-lucrativa",
@@ -57,7 +57,7 @@ export class TramitesService {
         "Documentación que acredite los medios económicos",
         "Seguro médico",
       ],
-      imagen: "/placeholder.svg?height=300&width=400",
+      imagen: "/no_lucrativa.jpg",
     },
     {
       id: "visa-trabajo",
@@ -79,7 +79,7 @@ export class TramitesService {
         "Contrato de trabajo firmado",
         "Autorización de residencia y trabajo tramitada por el empleador",
       ],
-      imagen: "/placeholder.svg?height=300&width=400",
+      imagen: "/visa_trabajo.png",
     },
     {
       id: "reagrupacion-familiar",
@@ -100,7 +100,7 @@ export class TramitesService {
         "Documentación que acredite la dependencia económica (para ascendientes)",
         "Certificado de registro del ciudadano de la Unión",
       ],
-      imagen: "/placeholder.svg?height=300&width=400",
+      imagen: "/reagrupacion_familiar.jpg",
     },
   ]
 
