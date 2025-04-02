@@ -37,7 +37,7 @@ export class ContactoComponent {
       const formData = this.contactForm.value;
 
       // Construir mensaje para WhatsApp
-      const phoneNumber = '+59177045885'; // Reemplaza con tu número de teléfono (incluir código de país)
+      const phoneNumber = '+59169044981'; // Reemplaza con tu número de teléfono (incluir código de país)
       const message = `*Nuevo mensaje de contacto*
         *Nombre:* ${formData.nombre}
         *Email:* ${formData.email}
