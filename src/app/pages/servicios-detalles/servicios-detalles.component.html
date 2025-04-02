@@ -1,0 +1,75 @@
+<section *ngIf="tramite" class="container my-4">
+    <div class="mb-4">
+        <a (click)="volver()" class="text-danger text-decoration-none d-inline-flex align-items-center cursor-pointer">
+            <i class="bi bi-chevron-left me-2"></i>
+            Volver a Servicios
+        </a>
+    </div>
+
+    <div class="card shadow">
+        <div class="row g-0">
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <img [src]="tramite.imagen" [alt]="tramite.titulo" class="img-fluid h-100 object-fit-cover rounded-3" />
+            </div>
+            <div class="col-12">
+                <div class="card-body p-4 row">
+                    <h1 class="h2 fw-bold mb-4 text-danger">{{ tramite.titulo }}</h1>
+                    <p class="mb-4 text-secondary">{{ tramite.descripcionCompleta }}</p>
+
+                    <div class="mb-4 col-md-6">
+                        <h2 class="h4 fw-bold mb-3 text-danger">Requisitos</h2>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let requisito of tramite.requisitos" class="mb-2 text-secondary">
+                                <i class="bi bi-dot me-2 text-danger"></i>
+                                {{ requisito }}
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mb-4 col-md-6">
+                        <h2 class="h4 fw-bold mb-3 text-danger">Documentación Necesaria</h2>
+                        <ul class="list-unstyled">
+                            <li *ngFor="let documento of tramite.documentacion" class="mb-2 text-secondary">
+                                <i class="bi bi-dot me-2 text-danger"></i>
+                                {{ documento }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4 bg-light">
+        <div class="card-body p-4">
+            <h2 class="h4 fw-bold mb-4 text-danger">Proceso de Solicitud</h2>
+            <ol class="list-numbered">
+                <li class="mb-3 text-secondary">Reúna toda la documentación requerida mencionada anteriormente.</li>
+                <li class="mb-3 text-secondary">Solicite una cita previa a través de nuestro sistema de citas online.
+                </li>
+                <li class="mb-3 text-secondary">Acuda a la cita con toda la documentación original y copias.</li>
+                <li class="mb-3 text-secondary">Realice el pago de las tasas correspondientes.</li>
+                <li class="mb-3 text-secondary">Espere la resolución de su solicitud, que será comunicada por los medios
+                    indicados.</li>
+            </ol>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-danger btn-lg px-5 py-3">
+                    Solicitar Cita Previa
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div *ngIf="!tramite" class="container text-center py-5">
+    <div class="card border-danger">
+        <div class="card-body">
+            <h2 class="h2 fw-bold text-danger mb-4">Trámite no encontrado</h2>
+            <p class="text-secondary mb-4">Lo sentimos, el trámite que está buscando no existe o no está disponible.</p>
+            <button (click)="volver()" class="btn btn-danger">
+                Volver a Trámites
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { ServiciosDetallesComponent } from './pages/servicios-detalles/servicios-detalles.component';
 
 export const routes: Routes = [
-    { path: "home", component: HomeComponent },
-    { path: "servicios", component: ServiciosComponent },
-    { path: "**", component: HomeComponent },
+    { path: "home", component: HomeComponent, title: "Inicio - Servicios Consulares" },
+    { path: "servicios", component: ServiciosComponent , title: "Servicios - Servicios Consulares" },
+    { path: "tramites/:id", component: ServiciosDetallesComponent , title: "Detalles del Trámite - Servicios Consulares" },
+    { path: "**", component: HomeComponent , title: "Inicio - Servicios Consulares" } // Redirige a HomeComponent para cualquier ruta no encontrada
 ];
