@@ -1,1 +1,145 @@
-<p>contacto works!</p>
+<section class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold mb-3 text-danger">Información de Contacto</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 800px;">
+            Estamos aquí para ayudarle con cualquier consulta relacionada con trámites consulares.
+            Puede contactarnos a través de los siguientes medios o utilizando el formulario de contacto.
+        </p>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-6">
+            <div class="card h-100 shadow">
+                <div class="card-body p-4">
+                    <h2 class="h4 fw-bold mb-4 text-danger">Datos de Contacto</h2>
+
+                    <div class="vstack gap-3">
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-geo-alt fs-5 text-danger me-3 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-semibold mb-0">Dirección</h3>
+                                <p class="text-secondary mb-0">Calle Consulado 123, 28001 Madrid, España</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-telephone fs-5 text-danger me-3 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-semibold mb-0">Teléfono</h3>
+                                <p class="text-secondary mb-0">+34 91 123 45 67</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-envelope fs-5 text-danger me-3 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-semibold mb-0">Email</h3>
+                                <p class="text-secondary mb-0">info&#64;serviciosconsulares.com</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start">
+                            <i class="bi bi-clock fs-5 text-danger me-3 mt-1"></i>
+                            <div>
+                                <h3 class="h6 fw-semibold mb-0">Horario de Atención</h3>
+                                <p class="text-secondary mb-0">Lunes a Viernes: 9:00 - 14:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h3 class="h6 fw-semibold mb-3">Redes Sociales</h3>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="text-danger text-decoration-none">
+                                <i class="bi bi-facebook fs-4"></i>
+                            </a>
+                            <a href="#" class="text-danger text-decoration-none">
+                                <i class="bi bi-twitter-x fs-4"></i>
+                            </a>
+                            <a href="#" class="text-danger text-decoration-none">
+                                <i class="bi bi-instagram fs-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 shadow">
+                <div class="card-body p-4">
+                    <h2 class="h4 fw-bold mb-4 text-danger">Formulario de Contacto</h2>
+
+                    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="d-grid gap-3">
+                        <div>
+                            <label for="nombre" class="form-label fw-semibold">Nombre completo</label>
+                            <input type="text" id="nombre" formControlName="nombre" class="form-control"
+                                placeholder="Ingrese su nombre completo" />
+                            <div *ngIf="submitted && contactForm.get('nombre')?.errors" class="form-text text-danger">
+                                <span *ngIf="contactForm.get('nombre')?.errors?.['required']">El nombre es
+                                    obligatorio</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="form-label fw-semibold">Correo electrónico</label>
+                            <input type="email" id="email" formControlName="email" class="form-control"
+                                placeholder="Ingrese su correo electrónico" />
+                            <div *ngIf="submitted && contactForm.get('email')?.errors" class="form-text text-danger">
+                                <span *ngIf="contactForm.get('email')?.errors?.['required']">El correo electrónico es
+                                    obligatorio</span>
+                                <span *ngIf="contactForm.get('email')?.errors?.['email']">Ingrese un correo electrónico
+                                    válido</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="asunto" class="form-label fw-semibold">Asunto</label>
+                            <input type="text" id="asunto" formControlName="asunto" class="form-control"
+                                placeholder="Ingrese el asunto de su consulta" />
+                            <div *ngIf="submitted && contactForm.get('asunto')?.errors" class="form-text text-danger">
+                                <span *ngIf="contactForm.get('asunto')?.errors?.['required']">El asunto es
+                                    obligatorio</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="mensaje" class="form-label fw-semibold">Mensaje</label>
+                            <textarea id="mensaje" formControlName="mensaje" rows="5" class="form-control"
+                                placeholder="Escriba su mensaje"></textarea>
+                            <div *ngIf="submitted && contactForm.get('mensaje')?.errors" class="form-text text-danger">
+                                <span *ngIf="contactForm.get('mensaje')?.errors?.['required']">El mensaje es
+                                    obligatorio</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" class="btn btn-danger w-100">
+                                Enviar Mensaje
+                            </button>
+                        </div>
+                    </form>
+
+                    <div *ngIf="messageSent" class="alert alert-success mt-4">
+                        Su mensaje ha sido enviado correctamente. Nos pondremos en contacto con usted lo antes posible.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow mt-4">
+        <div class="card-body">
+            <h2 class="h4 fw-bold mb-4 text-danger text-center">Ubicación</h2>
+            <div class="ratio ratio-16x9 bg-light rounded-3">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d237.46894650345237!2d-63.19435812569672!3d-17.768035267956535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTfCsDQ2JzA0LjUiUyA2M8KwMTEnMzkuMSJX!5e0!3m2!1ses-419!2sbo!4v1743619508038!5m2!1ses-419!2sbo"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="d-flex align-items-center justify-content-center">
+                    <p class="text-muted mb-0">Mapa de ubicación del consulado <samp class="text-danger fw-bold">Planta baja, local 14</samp> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
